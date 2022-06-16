@@ -52,6 +52,14 @@ describe('test routes for dogs table', () => {
     expect(resp.body.age).toBe(3);
   });
 
+  it('PUT / dogs/:id should update dog', async () => {
+    const resp = await request(app)
+      .put('/dogs/2')
+      .send({ name: 'Little Berry' });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Little Berry');
+  });
+
   afterAll(() => {
     pool.end();
   });
