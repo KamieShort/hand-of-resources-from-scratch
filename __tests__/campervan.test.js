@@ -41,6 +41,17 @@ describe('test routes for campervans table', () => {
     });
   });
 
+  it('POST /campervans should create a new van', async () => {
+    const resp = await request(app).post('/campervans').send({
+      make: 'Nissan',
+      model: 'NV Cargo',
+      builder: 'NW Van Builders',
+    });
+    expect(resp.body.make).toBe('Nissan');
+    expect(resp.body.model).toBe('NV Cargo');
+    expect(resp.body.builder).toBe('NW Van Builders');
+  });
+
   afterAll(() => {
     pool.end();
   });
