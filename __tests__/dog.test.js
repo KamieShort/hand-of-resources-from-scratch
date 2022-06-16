@@ -31,7 +31,7 @@ describe('test routes for dogs table', () => {
     ]);
   });
 
-  it.skip('/dogs/:id should return dog details with dogs', async () => {
+  it('/dogs/:id should return dog details with dogs', async () => {
     const res = await request(app).get('/dogs/1');
     expect(res.body).toEqual({
       id: '1',
