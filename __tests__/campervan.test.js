@@ -31,6 +31,16 @@ describe('test routes for campervans table', () => {
     ]);
   });
 
+  it('/campervans/:id should return campervan details', async () => {
+    const res = await request(app).get('/campervans/1');
+    expect(res.body).toEqual({
+      id: '1',
+      make: 'Mercedes',
+      model: 'Sprinter',
+      builder: 'custom build',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
