@@ -15,28 +15,30 @@ describe('test routes for dogs table', () => {
       {
         id: '1',
         name: 'Kimber',
-        breed: 'Silver Lab',
-        age: 5,
       },
       {
         id: '2',
         name: 'Berry',
-        breed: 'Maltese',
-        age: 10,
       },
       {
         id: '3',
         name: 'Storm',
-        breed: 'Chocolate Lab',
-        age: 8,
       },
       {
         id: '4',
         name: 'Leo',
-        breed: 'Mix',
-        age: 6,
       },
     ]);
+  });
+
+  it.skip('/dogs/:id should return dog details with dogs', async () => {
+    const res = await request(app).get('/dogs/1');
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Kimber',
+      breed: 'Silver Lab',
+      age: 5,
+    });
   });
 
   afterAll(() => {
