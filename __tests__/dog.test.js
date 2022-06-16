@@ -41,6 +41,17 @@ describe('test routes for dogs table', () => {
     });
   });
 
+  it('POST /dogs should create a new dog', async () => {
+    const resp = await request(app).post('/dogs').send({
+      name: 'Oscar',
+      breed: 'Corgi',
+      age: 3,
+    });
+    expect(resp.body.name).toBe('Oscar');
+    expect(resp.body.breed).toBe('Corgi');
+    expect(resp.body.age).toBe(3);
+  });
+
   afterAll(() => {
     pool.end();
   });
