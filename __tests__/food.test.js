@@ -41,6 +41,17 @@ describe('test routes for food table', () => {
     });
   });
 
+  it('POST /foods should create a new food item', async () => {
+    const resp = await request(app).post('/foods').send({
+      name: 'Chili Dogs',
+      type: 'American',
+      ingredients: 'Chili and Hotdogs',
+    });
+    expect(resp.body.name).toBe('Chili Dogs');
+    expect(resp.body.type).toBe('American');
+    expect(resp.body.ingredients).toBe('Chili and Hotdogs');
+  });
+
   afterAll(() => {
     pool.end();
   });
