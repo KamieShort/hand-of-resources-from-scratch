@@ -31,6 +31,16 @@ describe('test routes for coffee table', () => {
     ]);
   });
 
+  it('/coffee/:id should return coffee details', async () => {
+    const res = await request(app).get('/coffee/1');
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Ethiopia Yirgacheffe',
+      flavor: 'Citrus',
+      roast: 'Light Medium',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
