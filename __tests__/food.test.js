@@ -60,6 +60,13 @@ describe('test routes for food table', () => {
     expect(resp.body.name).toEqual('Clam Chowder');
   });
 
+  it('DELETE / foods/:id should delete a food item', async () => {
+    const resp = await request(app).delete('/foods/2');
+    expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/foods/2');
+    expect(body).toEqual(null);
+  });
+
   afterAll(() => {
     pool.end();
   });
