@@ -60,7 +60,7 @@ describe('test routes for dogs table', () => {
     expect(resp.body.name).toEqual('Little Berry');
   });
 
-  it('DELETE / dog/:id should delete a dog', async () => {
+  it('DELETE / dogs/:id should delete a dog', async () => {
     const resp = await request(app).delete('/dogs/2');
     expect(resp.status).toEqual(200);
     const { body } = await request(app).get('/dogs/2');

@@ -52,6 +52,21 @@ describe('test routes for campervans table', () => {
     expect(resp.body.builder).toBe('NW Van Builders');
   });
 
+  it('PUT / campervans/:id should update campervan by id', async () => {
+    const resp = await request(app)
+      .put('/campervans/2')
+      .send({ make: 'Old School Ford' });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.make).toEqual('Old School Ford');
+  });
+
+  it('DELETE / campervans/:id should delete a van', async () => {
+    const resp = await request(app).delete('/campervans/2');
+    expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/campervans/2');
+    expect(body).toEqual(null);
+  });
+
   afterAll(() => {
     pool.end();
   });
