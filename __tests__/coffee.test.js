@@ -41,6 +41,17 @@ describe('test routes for coffee table', () => {
     });
   });
 
+  it('POST /coffee should create a new coffee', async () => {
+    const resp = await request(app).post('/coffee').send({
+      name: 'Hazelnut Nespresso',
+      flavor: 'Hazelnut',
+      roast: 'Light Medium',
+    });
+    expect(resp.body.name).toBe('Hazelnut Nespresso');
+    expect(resp.body.flavor).toBe('Hazelnut');
+    expect(resp.body.roast).toBe('Light Medium');
+  });
+
   afterAll(() => {
     pool.end();
   });
