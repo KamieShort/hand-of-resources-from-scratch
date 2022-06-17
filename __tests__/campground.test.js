@@ -52,6 +52,14 @@ describe('test routes for campgrounds table', () => {
     expect(resp.body.features).toBe('Hiking');
   });
 
+  it('PUT / campgrounds/:id should update campground', async () => {
+    const resp = await request(app)
+      .put('/campgrounds/2')
+      .send({ name: 'Little Noti Campground' });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Little Noti Campground');
+  });
+
   afterAll(() => {
     pool.end();
   });
