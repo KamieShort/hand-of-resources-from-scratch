@@ -41,6 +41,17 @@ describe('test routes for campgrounds table', () => {
     });
   });
 
+  it('POST /campground should create a new campground ', async () => {
+    const resp = await request(app).post('/campgrounds').send({
+      name: 'Noti Campground',
+      location: 'Noti, OR',
+      features: 'Hiking',
+    });
+    expect(resp.body.name).toBe('Noti Campground');
+    expect(resp.body.location).toBe('Noti, OR');
+    expect(resp.body.features).toBe('Hiking');
+  });
+
   afterAll(() => {
     pool.end();
   });
