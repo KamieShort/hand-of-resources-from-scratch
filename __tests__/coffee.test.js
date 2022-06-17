@@ -60,6 +60,13 @@ describe('test routes for coffee table', () => {
     expect(resp.body.name).toEqual('New Yonder');
   });
 
+  it('DELETE / coffee/:id should delete a coffee item', async () => {
+    const resp = await request(app).delete('/coffee/2');
+    expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/coffee/2');
+    expect(body).toEqual(null);
+  });
+
   afterAll(() => {
     pool.end();
   });
