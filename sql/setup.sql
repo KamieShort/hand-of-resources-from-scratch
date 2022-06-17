@@ -68,7 +68,7 @@ INSERT INTO coffee (name, flavor, roast) VALUES
 ('The Surge', 'Chocolate, Cream', 'Decaf');
 
 INSERT INTO campgrounds (name, location, features) VALUES
-('Champoeg State Park', 'Newberg, OR', 'Vollyball Court'),
+('Champoeg State Park', 'Newberg, OR', 'Volleyball Court'),
 ('Feyrer Park', 'Mollala, OR', 'River'),
 ('Barton Campground', 'Boring, OR', 'Playground'),
 ('Milo McIver State Park', 'Estacada, OR', 'Boat Ramp');

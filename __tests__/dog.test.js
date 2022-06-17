@@ -8,7 +8,7 @@ describe('test routes for dogs table', () => {
     return setup(pool);
   });
 
-  it('/dogs should display list of dogs', async () => {
+  it('/dogs should display a list of dogs', async () => {
     const res = await request(app).get('/dogs');
 
     expect(res.body).toEqual([
