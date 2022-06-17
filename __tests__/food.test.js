@@ -52,6 +52,14 @@ describe('test routes for food table', () => {
     expect(resp.body.ingredients).toBe('Chili and Hotdogs');
   });
 
+  it('PUT / foods/:id should update food', async () => {
+    const resp = await request(app)
+      .put('/foods/2')
+      .send({ name: 'Clam Chowder' });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Clam Chowder');
+  });
+
   afterAll(() => {
     pool.end();
   });
