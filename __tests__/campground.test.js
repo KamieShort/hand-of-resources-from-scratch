@@ -60,6 +60,13 @@ describe('test routes for campgrounds table', () => {
     expect(resp.body.name).toEqual('Little Noti Campground');
   });
 
+  it('DELETE / campgrounds/:id should delete a campground', async () => {
+    const resp = await request(app).delete('/campgrounds/2');
+    expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/campgrounds/2');
+    expect(body).toEqual(null);
+  });
+
   afterAll(() => {
     pool.end();
   });
