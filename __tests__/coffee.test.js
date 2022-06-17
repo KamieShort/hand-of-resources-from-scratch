@@ -52,6 +52,14 @@ describe('test routes for coffee table', () => {
     expect(resp.body.roast).toBe('Light Medium');
   });
 
+  it('PUT / coffee/:id should update coffee item', async () => {
+    const resp = await request(app)
+      .put('/coffee/2')
+      .send({ name: 'New Yonder' });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('New Yonder');
+  });
+
   afterAll(() => {
     pool.end();
   });
