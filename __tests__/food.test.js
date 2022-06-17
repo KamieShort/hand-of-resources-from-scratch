@@ -31,6 +31,16 @@ describe('test routes for food table', () => {
     ]);
   });
 
+  it('/foods/:id should return food details', async () => {
+    const res = await request(app).get('/foods/1');
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Spaghetti',
+      type: 'Italian',
+      ingredients: 'Noodles, Meatballs, Sauce',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
